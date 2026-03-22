@@ -8,4 +8,4 @@ cmds = ["npm install", "pip install -r requirements.txt"]
 cmds = ["echo Building..."]
 
 [start]
-cmd = "bash start.sh"
+cmd = "npm start"
