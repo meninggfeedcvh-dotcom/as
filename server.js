@@ -134,6 +134,10 @@ app.post('/api/purchase', (req, res) => {
     });
 });
 
+app.get('/health', (req, res) => {
+    res.status(200).send('OK');
+});
+
 app.use(express.static(path.join(__dirname, '/')));
 
 app.listen(port, '0.0.0.0', () => {
