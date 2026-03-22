@@ -1,0 +1,122 @@
+.referral-content {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 25px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.referral-icon-top {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: var(--accent-purple);
+}
+
+.referral-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.referral-link-container {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.referral-link-container i {
+    color: var(--text-secondary);
+}
+
+.referral-link-input {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 13px;
+    width: 100%;
+    outline: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.copy-mini-btn {
+    background: #ff9800; /* Orange 'Nusxa' button */
+    border: none;
+    border-radius: 6px;
+    color: #000;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.copy-mini-btn:active {
+    transform: scale(0.9);
+}
+
+.referral-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.ref-stat-box {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ref-stat-val {
+    font-size: 20px;
+    font-weight: 700;
+    color: #4fc3f7; /* Cyan blue text for numbers */
+}
+
+.ref-stat-lbl {
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+.share-main-btn {
+    width: 100%;
+    background: #7c4dff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(124, 77, 255, 0.3);
+}
+
+.share-main-btn:active {
+    transform: scale(0.98);
+}
+
+/* Light theme overrides */
+body.light-theme .referral-link-container {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+body.light-theme .ref-stat-box {
+    background: rgba(0, 0, 0, 0.03);
+}
