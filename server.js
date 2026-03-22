@@ -142,17 +142,33 @@ app.listen(port, '0.0.0.0', () => {
     
     // Start Python Bot
     console.log("Starting Python Bot...");
-    const botCommand = process.platform === 'win32' ? 'python' : 'python3';
-    const bot = spawn(botCommand, ['main.py'], {
-        stdio: 'inherit',
-        env: { ...process.env, PYTHONUNBUFFERED: '1' }
-    });
+    
+    let botCommand = 'python3';
+    if (process.platform === 'win32') {
+        botCommand = 'python';
+    }
 
-    bot.on('error', (err) => {
-        console.error('Failed to start bot:', err);
-    });
+    const startBot = (cmd) => {
+        console.log(`Attempting to start bot with command: ${cmd}`);
+        const bot = spawn(cmd, ['main.py'], {
+            stdio: 'inherit',
+            env: { ...process.env, PYTHONUNBUFFERED: '1' }
+        });
 
-    bot.on('close', (code) => {
-        console.log(`Bot process exited with code ${code}`);
-    });
+        bot.on('error', (err) => {
+            console.error(`Failed to start bot with ${cmd}:`, err.message);
+            if (cmd === 'python3' && process.platform !== 'win32') {
+                console.log("Retrying with 'python' command...");
+                startBot('python');
+            }
+        });
+
+        bot.on('close', (code) => {
+            if (code !== 0 && code !== null) {
+                console.error(`Bot process exited with code ${code}`);
+            }
+        });
+    };
+
+    startBot(botCommand);
 });
