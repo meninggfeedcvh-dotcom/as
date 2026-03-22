@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const { spawn } = require('child_process');
 const port = process.env.PORT || 3000;
 
 
@@ -137,4 +138,19 @@ app.use(express.static(path.join(__dirname, '/')));
 
 app.listen(port, '0.0.0.0', () => {
     console.log(`Server running at http://0.0.0.0:${port}`);
+    
+    // Start Python Bot
+    console.log("Starting Python Bot...");
+    const bot = spawn('python', ['main.py'], {
+        stdio: 'inherit',
+        env: { ...process.env, PYTHONUNBUFFERED: '1' }
+    });
+
+    bot.on('error', (err) => {
+        console.error('Failed to start bot:', err);
+    });
+
+    bot.on('close', (code) => {
+        console.log(`Bot process exited with code ${code}`);
+    });
 });
