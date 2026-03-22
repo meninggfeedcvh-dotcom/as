@@ -137,7 +137,8 @@ app.post('/api/purchase', (req, res) => {
 app.use(express.static(path.join(__dirname, '/')));
 
 app.listen(port, '0.0.0.0', () => {
-    console.log(`Server running at http://0.0.0.0:${port}`);
+    console.log(`Server is listening on port ${port} and address 0.0.0.0`);
+    console.log(`Platform detected: ${process.platform}`);
     
     // Start Python Bot
     console.log("Starting Python Bot...");
