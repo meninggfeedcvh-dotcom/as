@@ -141,7 +141,8 @@ app.listen(port, '0.0.0.0', () => {
     
     // Start Python Bot
     console.log("Starting Python Bot...");
-    const bot = spawn('python', ['main.py'], {
+    const botCommand = process.platform === 'win32' ? 'python' : 'python3';
+    const bot = spawn(botCommand, ['main.py'], {
         stdio: 'inherit',
         env: { ...process.env, PYTHONUNBUFFERED: '1' }
     });
